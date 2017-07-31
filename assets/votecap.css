@@ -1,0 +1,4 @@
+.votebox.voted { color: #008000; }
+.votebox.voted:hover { color: #888;cursor:pointer;cursor:hand; }
+.votebox.notvoted { color: #888; }
+.votebox.notvoted:hover { color: #008000;cursor:pointer;cursor:hand; }

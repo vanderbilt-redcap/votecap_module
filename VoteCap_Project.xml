@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ODM xmlns="http://www.cdisc.org/ns/odm/v1.3" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:redcap="https://projectredcap.org" xsi:schemaLocation="http://www.cdisc.org/ns/odm/v1.3 schema/odm/ODM1-3-1.xsd" ODMVersion="1.3.1" FileOID="000-00-0000" FileType="Snapshot" Description="VoteCap" AsOfDateTime="2017-03-31T14:40:35" CreationDateTime="2017-03-31T14:40:35" SourceSystem="REDCap" SourceSystemVersion="7.3.2">
+<Study OID="Project.VoteCap">
+<GlobalVariables>
+	<StudyName>VoteCap</StudyName>
+	<StudyDescription>This file contains the metadata, events, and data for REDCap project "VoteCap".</StudyDescription>
+	<ProtocolName>VoteCap</ProtocolName>
+	<redcap:RecordAutonumberingEnabled>1</redcap:RecordAutonumberingEnabled>
+	<redcap:CustomRecordLabel>([session_name])</redcap:CustomRecordLabel>
+	<redcap:SecondaryUniqueField></redcap:SecondaryUniqueField>
+	<redcap:SchedulingEnabled>0</redcap:SchedulingEnabled>
+	<redcap:Purpose>4</redcap:Purpose>
+	<redcap:PurposeOther></redcap:PurposeOther>
+	<redcap:ProjectNotes></redcap:ProjectNotes>
+	<redcap:RepeatingInstrumentsAndEvents>
+		<redcap:RepeatingInstruments>
+			<redcap:RepeatingInstrument redcap:UniqueEventName="event_1_arm_1" redcap:RepeatInstrument="session_questions" redcap:CustomLabel="[votes] votes"/>
+		</redcap:RepeatingInstruments>
+	</redcap:RepeatingInstrumentsAndEvents>
+</GlobalVariables>
+<MetaDataVersion OID="Metadata.VoteCap_2017-03-31_1440" Name="VoteCap" redcap:RecordIdField="session_id">
+	<FormDef OID="Form.session_info" Name="Session Info" Repeating="No" redcap:FormName="session_info">
+		<ItemGroupRef ItemGroupOID="session_info.session_id" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="session_info.session_info_complete" Mandatory="No"/>
+	</FormDef>
+	<FormDef OID="Form.session_questions" Name="Session Questions" Repeating="No" redcap:FormName="session_questions">
+		<ItemGroupRef ItemGroupOID="session_questions.question" Mandatory="No"/>
+		<ItemGroupRef ItemGroupOID="session_questions.session_questions_complete" Mandatory="No"/>
+	</FormDef>
+	<ItemGroupDef OID="session_info.session_id" Name="Session Info" Repeating="No">
+		<ItemRef ItemOID="session_id" Mandatory="No" redcap:Variable="session_id"/>
+		<ItemRef ItemOID="session_name" Mandatory="Yes" redcap:Variable="session_name"/>
+		<ItemRef ItemOID="session_expiration" Mandatory="No" redcap:Variable="session_expiration"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="session_info.session_info_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="session_info_complete" Mandatory="No" redcap:Variable="session_info_complete"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="session_questions.question" Name="Session Questions" Repeating="No">
+		<ItemRef ItemOID="question" Mandatory="No" redcap:Variable="question"/>
+		<ItemRef ItemOID="answer" Mandatory="No" redcap:Variable="answer"/>
+		<ItemRef ItemOID="votes" Mandatory="No" redcap:Variable="votes"/>
+	</ItemGroupDef>
+	<ItemGroupDef OID="session_questions.session_questions_complete" Name="Form Status" Repeating="No">
+		<ItemRef ItemOID="session_questions_complete" Mandatory="No" redcap:Variable="session_questions_complete"/>
+	</ItemGroupDef>
+	<ItemDef OID="session_id" Name="session_id" DataType="integer" Length="999" redcap:Variable="session_id" redcap:FieldType="text" redcap:TextValidationType="int">
+		<Question><TranslatedText>Session ID</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="session_name" Name="session_name" DataType="text" Length="999" redcap:Variable="session_name" redcap:FieldType="textarea" redcap:FieldNote="Title displayed at top of page" redcap:RequiredField="y">
+		<Question><TranslatedText>Session name</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="session_expiration" Name="session_expiration" DataType="partialDatetime" Length="999" redcap:Variable="session_expiration" redcap:FieldType="text" redcap:TextValidationType="datetime_ymd" redcap:FieldNote="If set, session will no longer be shown in list after this time.">
+		<Question><TranslatedText>Session expiration (optional)</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="session_info_complete" Name="session_info_complete" DataType="text" Length="1" redcap:Variable="session_info_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="session_info_complete.choices"/>
+	</ItemDef>
+	<ItemDef OID="question" Name="question" DataType="text" Length="999" redcap:Variable="question" redcap:FieldType="textarea">
+		<Question><TranslatedText>Question</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="answer" Name="answer" DataType="text" Length="999" redcap:Variable="answer" redcap:FieldType="textarea">
+		<Question><TranslatedText>Answer (optional)If answer is entered here, it will appear below its question on the question list page.</TranslatedText><redcap:FormattedTranslatedText>Answer (optional)&lt;div style=&quot;font-weight:normal;&quot;&gt;If answer is entered here, it will appear below its question on the question list page.&lt;/div&gt;</redcap:FormattedTranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="votes" Name="votes" DataType="integer" Length="999" redcap:Variable="votes" redcap:FieldType="text" redcap:TextValidationType="int">
+		<Question><TranslatedText>Votes</TranslatedText></Question>
+	</ItemDef>
+	<ItemDef OID="session_questions_complete" Name="session_questions_complete" DataType="text" Length="1" redcap:Variable="session_questions_complete" redcap:FieldType="select" redcap:SectionHeader="Form Status">
+		<Question><TranslatedText>Complete?</TranslatedText></Question>
+		<CodeListRef CodeListOID="session_questions_complete.choices"/>
+	</ItemDef>
+	<CodeList OID="session_info_complete.choices" Name="session_info_complete" DataType="text" redcap:Variable="session_info_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+	<CodeList OID="session_questions_complete.choices" Name="session_questions_complete" DataType="text" redcap:Variable="session_questions_complete">
+		<CodeListItem CodedValue="0"><Decode><TranslatedText>Incomplete</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="1"><Decode><TranslatedText>Unverified</TranslatedText></Decode></CodeListItem>
+		<CodeListItem CodedValue="2"><Decode><TranslatedText>Complete</TranslatedText></Decode></CodeListItem>
+	</CodeList>
+</MetaDataVersion>
+</Study>
+</ODM>

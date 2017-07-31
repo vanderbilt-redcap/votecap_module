@@ -1,0 +1,35 @@
+{
+	"name": "VoteCap",
+	"description": "Allows anonymous participants to ask questions and upvote the questions of others.",
+
+	"namespace": "RandomNamespace001",
+
+	"module-class-name": "VoteCap",
+
+	"authors": [
+		{
+			"name": "Rob Taylor",
+			"email": "rob.taylor@vanderbilt.edu"
+		}
+	],
+	
+	"permissions": [
+		"select_data",
+		"update_data",
+		"delete_data"
+	],
+	
+	"no-auth-pages": [
+		"index"
+	],
+
+	"links": {
+		"project": [
+			{
+				"name": "VoteCap",
+				"icon": "brick",
+				"url": "index&NOAUTH"
+			}
+		]
+	}
+}
