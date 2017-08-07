@@ -1,5 +1,5 @@
 <?php
-namespace RandomNamespace001;
+namespace Vanderbilt\VoteCap;
 
 class VoteCap extends \ExternalModules\AbstractExternalModule
 {
