@@ -1,3 +1,3 @@
 <?php
 error_reporting(0);
-$votecap = new \RandomNamespace001\VoteCap($_GET['pid']);
+$votecap = new \Vanderbilt\VoteCap\VoteCap($_GET['pid']);
