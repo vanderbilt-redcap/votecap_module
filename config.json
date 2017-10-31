@@ -1,6 +1,6 @@
 {
 	"name": "VoteCap",
-	"description": "Allows anonymous participants to ask questions and upvote the questions of others.",
+	"description": "Simple Q&A interface that allows anonymous participants to ask questions and upvote the questions of others. Setup instructions: 1) Download the <a target=\"_blank\" style=\"text-decoration:underline;\" href=\"https://github.com/vanderbilt-redcap/votecap_module/raw/master/VoteCap_Project.xml\" download=\"VoteCap_Project.xml\">VoteCap Project XML file</a>, 2) Create a new REDCap project using the XML file, 3), Enable and configure the VoteCap module in that project, 4) Create a test record in the project (just enter a 'session name' for it), and 5) Click the VoteCap link on the left-hand project menu.",
 
 	"namespace": "Vanderbilt\\VoteCap",
 
