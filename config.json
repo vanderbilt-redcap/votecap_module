@@ -7,15 +7,14 @@
 	"authors": [
 		{
 			"name": "Rob Taylor",
-			"email": "rob.taylor@vanderbilt.edu",
+			"email": "rob.taylor@vumc.org",
 			"institution": "Vanderbilt University Medical Center"
 		}
 	],
 	
 	"permissions": [
 		"select_data",
-		"update_data",
-		"delete_data"
+		"update_data"
 	],
 	
 	"no-auth-pages": [
@@ -27,7 +26,7 @@
 			{
 				"name": "VoteCap",
 				"icon": "brick",
-				"url": "index&NOAUTH"
+				"url": "index.php?NOAUTH"
 			}
 		]
 	},
@@ -37,6 +36,26 @@
 		"php-version-max": "",
 		"redcap-version-min": "7.0.0",
 		"redcap-version-max": ""
-	}
+	},
 	
+	"project-settings": [
+      {
+         "key": "instructions",
+         "name": "Instructions displayed at top of the main page",
+         "type": "textarea",
+		 "default": "All available Q&A sessions are listed below. Click on the session title to view the questions for that session. Within each, you will be able to submit your own questions as well as up-vote questions submitted by others. All questions will be ordered by vote count in descending order."
+      },
+      {
+         "key": "title",
+         "name": "Header text displayed above the list of sessions",
+         "type": "text",
+		 "default": "Q&A Sessions"
+      },
+      {
+         "key": "ask-question-placeholder",
+         "name": "Placeholder text displayed in text box where participant submits a question",
+         "type": "text",
+		 "default": "Ask a question..."
+      }
+	]
 }

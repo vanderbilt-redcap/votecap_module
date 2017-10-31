@@ -186,24 +186,20 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 	{
 		$HtmlPage = new \HtmlPage();
 		$HtmlPage->PrintHeaderExt();
-		?>
+		$instructions = $this->getProjectSetting('instructions', PROJECT_ID);
+		if (trim($instructions) != '') {
+			?><div class="panel panel-default">
+				<div class="panel-heading" style="font-size:14px;"><?=$instructions?></div>
+			</div><?php
+		} ?>
 		<div class="panel panel-default">
-			<div class="panel-heading" style="font-size:14px;">
-				All available Q&A sessions are listed below. Click on the session title to view the questions for that session.
-				Within each, you will be able to submit your own questions as well as up-vote questions submitted by others.
-				All questions will be ordered by vote count in descending order.
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading" style="font-size:28px;">
-				<span style="letter-spacing:3px;">Q&A</span> Sessions
-			</div>
+			<div class="panel-heading" style="font-size:28px;"><?=$this->getProjectSetting('title', PROJECT_ID)?></div>
 			<?php if (empty($this->sessions)) { ?>
 				<ul class="list-group">
 					<li class="list-group-item" style="color:#A00000;">
 						<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-						No sessions have been created yet. They will first need to be created as individual
-						records in the project before being displayed here.
+						No listings have been created yet. They will first need to be created as individual
+						records in the REDCap project before being displayed here.
 					</li>
 				</ul>
 			<?php } else { ?>
@@ -229,14 +225,14 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		<link rel="stylesheet" type="text/css" media="screen,print" href="<?php print $this->getUrl("assets/votecap.css") ?>"/>
 		<script type="text/javascript" src="<?php print $this->getUrl("assets/votecap.js") ?>"></script>
 		
-		<div class="pull-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&id={$_GET['id']}" ?>">Return to session list</a></div>
+		<div class="pull-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&id={$_GET['id']}" ?>">Return to previous page</a></div>
 		<div class="pull-right" style="margin-right:25px;color:#bbb;font-size:12px;">Page refreshes every 30 seconds</div>
 		<div class="clear"></div>
 		<h1 style="margin-top:5px;"><?php print htmlspecialchars($this->session, ENT_QUOTES) ?></h1>
 		
 		<?php if (isset($_GET['msg']) && $_GET['msg'] == 'new') { ?>
 		<div class="alert alert-success" style="border:1px solid #d6e9c6 !important;font-size:16px;">
-			<strong>Success!</strong> Your question was added at the bottom of the page.
+			<strong>Success!</strong> Your submission was added at the bottom of the page.
 		</div>
 		<?php } ?>
 		
@@ -247,7 +243,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 					<form method="post" action="<?php print $_SERVER['REQUEST_URI'] ?>" id="newquestion_form">
 						<div class="col-lg-9">
 							<div class="input-group">
-								<input type="text" tabindex="1" id="newquestion" name="newquestion" class="form-control" placeholder="Ask a question...">
+								<input type="text" tabindex="1" id="newquestion" name="newquestion" class="form-control" placeholder="<?=htmlspecialchars($this->getProjectSetting('ask-question-placeholder', PROJECT_ID), ENT_QUOTES)?>">
 								<span class="input-group-btn">
 									<button tabindex="2" id="newquestion_submit" class="btn btn-default" type="button"><b>Submit</b></button>
 								</span>
