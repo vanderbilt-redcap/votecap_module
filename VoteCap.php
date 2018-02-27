@@ -102,9 +102,9 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 	{
 		if (!is_numeric($qid) || abs($value) !== 1) exit;
 		if ($value > 0) {
-			$this->saveCookieStateValue($_GET['sid'], $qid, $value);
+			$this->saveCookieStateValue($_GET['pid']."-".$_GET['sid'], $qid, $value);
 		} else {
-			$this->removeCookieStateValue($_GET['sid'], $qid);
+			$this->removeCookieStateValue($_GET['pid']."-".$_GET['sid'], $qid);
 		}
 	}
 	
@@ -161,7 +161,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 							$this->questions[$repeat_instance]['a'] = trim($ettr['answer']);
 							$this->questions[$repeat_instance]['c'] = ($ettr['votes'] == '') ? '0' : $ettr['votes'];
 							// Is the question already upvoted?
-							$upvoted = $this->getCookieStateValue($record, $repeat_instance);
+							$upvoted = $this->getCookieStateValue($_GET['pid']."-".$record, $repeat_instance);
 							$this->questions[$repeat_instance]['v'] = ($upvoted === null) ? 'notvoted' : 'voted';
 						}
 					}
