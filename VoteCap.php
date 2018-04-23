@@ -339,5 +339,9 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 			$_COOKIE[$this->cookie_name] = array();
 		}
 	}
-	
+
+	public function redcap_module_link_check_display()
+	{
+		return true;
+	}
 }
