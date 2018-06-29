@@ -38,7 +38,7 @@ $(function(){
 });
 
 function getURL() {
-	return 'index.php?NOAUTH&pid='+getParameterByName('pid')+'&sid='+getParameterByName('sid')+'&id='+getParameterByName('id')+'&page='+getParameterByName('page');
+	return 'index.php?NOAUTH&pid='+getParameterByName('pid')+'&sid='+getParameterByName('sid')+'&prefix='+getParameterByName('prefix')+'&page='+getParameterByName('page');
 }
 	
 // Refresh page periodically
