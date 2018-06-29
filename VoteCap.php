@@ -225,7 +225,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		<link rel="stylesheet" type="text/css" media="screen,print" href="<?php print $this->getUrl("assets/votecap.css") ?>"/>
 		<script type="text/javascript" src="<?php print $this->getUrl("assets/votecap.js") ?>"></script>
 		
-		<div class="pull-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&id={$_GET['id']}" ?>">Return to previous page</a></div>
+		<div class="pull-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&prefix={$_GET['prefix']}" ?>">Return to previous page</a></div>
 		<div class="pull-right" style="margin-right:25px;color:#bbb;font-size:12px;">Page refreshes every 30 seconds</div>
 		<div class="clear"></div>
 		<h1 style="margin-top:5px;"><?php print htmlspecialchars($this->session, ENT_QUOTES) ?></h1>
