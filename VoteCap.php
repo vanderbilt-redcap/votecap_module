@@ -188,12 +188,12 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		$HtmlPage->PrintHeaderExt();
 		$instructions = $this->getProjectSetting('instructions', PROJECT_ID);
 		if (trim($instructions) != '') {
-			?><div class="panel panel-default">
-				<div class="panel-heading" style="font-size:14px;"><?=$instructions?></div>
+			?><div class="panel panel-default card mb-3">
+				<div class="panel-heading card-header" style="font-size:14px;"><?=$instructions?></div>
 			</div><?php
 		} ?>
-		<div class="panel panel-default">
-			<div class="panel-heading" style="font-size:28px;"><?=$this->getProjectSetting('title', PROJECT_ID)?></div>
+		<div class="panel panel-default card">
+			<div class="panel-heading card-header" style="font-size:28px;"><?=$this->getProjectSetting('title', PROJECT_ID)?></div>
 			<?php if (empty($this->sessions)) { ?>
 				<ul class="list-group">
 					<li class="list-group-item" style="color:#A00000;">
@@ -225,8 +225,8 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		<link rel="stylesheet" type="text/css" media="screen,print" href="<?php print $this->getUrl("assets/votecap.css") ?>"/>
 		<script type="text/javascript" src="<?php print $this->getUrl("assets/votecap.js") ?>"></script>
 		
-		<div class="pull-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&prefix={$_GET['prefix']}" ?>">Return to previous page</a></div>
-		<div class="pull-right" style="margin-right:25px;color:#bbb;font-size:12px;">Page refreshes every 30 seconds</div>
+		<div class="pull-right float-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&prefix={$_GET['prefix']}" ?>">Return to previous page</a></div>
+		<div class="pull-right float-right" style="margin-right:25px;color:#bbb;font-size:12px;">Page refreshes every 30 seconds</div>
 		<div class="clear"></div>
 		<h1 style="margin-top:5px;"><?php print htmlspecialchars($this->session, ENT_QUOTES) ?></h1>
 		
@@ -236,16 +236,16 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		</div>
 		<?php } ?>
 		
-		<div class="panel panel-default">
+		<div class="panel panel-default card">
 			<!-- Default panel contents -->
-			<div class="panel-heading">
+			<div class="panel-heading card-header">
 				<div class="row">
-					<form method="post" action="<?php print $_SERVER['REQUEST_URI'] ?>" id="newquestion_form">
+					<form method="post" action="<?php print $_SERVER['REQUEST_URI'] ?>" id="newquestion_form" style="width:100%;">
 						<div class="col-lg-9">
 							<div class="input-group">
 								<input type="text" tabindex="1" id="newquestion" name="newquestion" class="form-control" placeholder="<?=htmlspecialchars($this->getProjectSetting('ask-question-placeholder', PROJECT_ID), ENT_QUOTES)?>">
 								<span class="input-group-btn">
-									<button tabindex="2" id="newquestion_submit" class="btn btn-default" type="button"><b>Submit</b></button>
+									<button tabindex="2" id="newquestion_submit" class="btn btn-defaultrc" type="button"><b>Submit</b></button>
 								</span>
 							</div>
 						</div>
@@ -267,8 +267,8 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 					}
 					?>
 					<li class="list-group-item">
-						<div qid="<?php print $attr['id'] ?>" class="<?php print $attr['v'] ?> votebox pull-left text-center" style="padding:0px 30px 2px 2px;width:100px;">
-							<span class="glyphicon glyphicon-upload" style="font-size:36px;" aria-hidden="true" title="Click to vote or unvote"></span><br>
+						<div qid="<?php print $attr['id'] ?>" class="<?php print $attr['v'] ?> votebox pull-left float-left text-center" style="padding:0px 30px 2px 2px;width:100px;">
+							<i class="fas fa-thumbs-up" style="font-size:36px;margin-bottom:5px;" aria-hidden="true" title="Click to vote or unvote"></i><br>
 							<span id="vc_<?php print $attr['id'] ?>" class="nowrap" style="font-size:14px;font-weight:bold;">
 								<?php print $attr['c'] ?> vote<?php if ($attr['c'] != 1) print "s"; ?>
 							</span>
