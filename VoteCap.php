@@ -228,6 +228,9 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		?>
 		<link rel="stylesheet" type="text/css" media="screen,print" href="<?php print $this->getUrl("assets/votecap.css") ?>"/>
 		<script type="text/javascript" src="<?php print $this->getUrl("assets/votecap.js") ?>"></script>
+		<script type="text/javascript">
+		var redcap_csrf_token = '<?php print $this->getCSRFToken() ?>';
+		</script>
 		
 		<div class="pull-right float-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&prefix={$_GET['prefix']}&type=module" ?>">Return to previous page</a></div>
 		<div class="pull-right float-right" style="margin-right:25px;color:#bbb;font-size:12px;">Page refreshes every 30 seconds</div>
@@ -245,6 +248,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 			<div class="panel-heading card-header">
 				<div class="row">
 					<form method="post" action="<?php print $_SERVER['REQUEST_URI'] ?>" id="newquestion_form" style="width:100%;">
+						<input type="hidden" name="redcap_csrf_token" value="<?php print $this->getCSRFToken() ?>">
 						<div class="col-lg-9">
 							<div class="input-group">
 								<input type="text" tabindex="1" id="newquestion" name="newquestion" class="form-control" placeholder="<?=htmlspecialchars($this->getProjectSetting('ask-question-placeholder', PROJECT_ID), ENT_QUOTES)?>">
