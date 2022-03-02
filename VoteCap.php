@@ -7,7 +7,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 	private $Proj;
 	private $session;
 	private $sessions;
-	private $questions;
+	private $questions = [];
 	private $cookie_name = 'votecap';
 	private $field_check = array('session_id', 'session_name', 'question', 'answer', 'votes', 'session_expiration');
 	
@@ -178,7 +178,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 	
 	private function orderQuestionsByCount()
 	{
-		$count_array = array();
+		$count_array = $answer_array = array();
 		foreach ($this->questions as $qnum=>$attr) {
 			$count_array[$qnum] = $attr['c'];
 			$answer_array[$qnum] = ($attr['a'] == '') ? 0 : 1;
@@ -344,7 +344,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		}
 	}
 
-	public function redcap_module_link_check_display()
+	public function redcap_module_link_check_display($project_id, $link)
 	{
 		return true;
 	}
