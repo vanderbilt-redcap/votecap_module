@@ -232,7 +232,7 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 		var redcap_csrf_token = '<?php print $this->getCSRFToken() ?>';
 		</script>
 		
-		<div class="pull-right float-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page={$_GET['page']}&prefix={$_GET['prefix']}&type=module" ?>">Return to previous page</a></div>
+		<div class="pull-right float-right"><a style="text-decoration:underline;font-size:14px;" href="<?php print PAGE_FULL."?NOAUTH&pid={$this->project_id}&page=".htmlentities($_GET['page'], ENT_QUOTES)."&prefix=".htmlentities($_GET['prefix'], ENT_QUOTES)."&type=module" ?>">Return to previous page</a></div>
 		<div class="pull-right float-right" style="margin-right:25px;color:#bbb;font-size:12px;">Page refreshes every 30 seconds</div>
 		<div class="clear"></div>
 		<h1 style="margin-top:5px;"><?php print htmlspecialchars($this->session, ENT_QUOTES) ?></h1>
@@ -328,17 +328,15 @@ class VoteCap extends \ExternalModules\AbstractExternalModule
 	// Save the UI state by passing the array of values
 	private function saveCookieState()
 	{
-		$_COOKIE[$this->cookie_name] = (empty($_COOKIE[$this->cookie_name]) || !is_array($_COOKIE[$this->cookie_name])) 
-										? "" : serialize($_COOKIE[$this->cookie_name]);
-		$cookie_params = session_get_cookie_params();
-		setcookie($this->cookie_name, $_COOKIE[$this->cookie_name], time()+(3600*24*365), '/', '', ($cookie_params['secure']===true), true);
+		$encryptedCookieVal = (!isset($_COOKIE[$this->cookie_name]) || empty($_COOKIE[$this->cookie_name]) || !is_array($_COOKIE[$this->cookie_name])) ? "" : encrypt(serialize($_COOKIE[$this->cookie_name]));
+        savecookie($this->cookie_name, $encryptedCookieVal, time()+(3600*24*365));
 	}
 	
 	private function loadCookie() 
 	{
 		if (isset($_COOKIE[$this->cookie_name])) {
 			if (!is_array($_COOKIE[$this->cookie_name])) {
-				$_COOKIE[$this->cookie_name] = unserialize($_COOKIE[$this->cookie_name]);
+				$_COOKIE[$this->cookie_name] = unserialize(decrypt($_COOKIE[$this->cookie_name]));
 			}
 			if (!is_array($_COOKIE[$this->cookie_name])) {
 				$_COOKIE[$this->cookie_name] = array();
